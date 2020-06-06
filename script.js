@@ -1,10 +1,10 @@
+const randomColor = Math.floor(Math.random()*16777215).toString(16);
 const gridContainer = document.getElementById('grid-container');
-const resizeBtn = document.getElementById('resize');
-const resetBtn = document.getElementById('reset');
+const controls = document.getElementById('controls');
 const btns = document.querySelectorAll('button');
 let squaresPerSide = 16;
+let squareColor = '000';
 
-// 16x16 grid
 function createGrid() {
   for (let i = 0; i < (squaresPerSide * squaresPerSide); i++) {
     createSquare();
@@ -29,20 +29,34 @@ function resetGrid() {
 
 gridContainer.addEventListener('mouseover', e => {
   if (e.target.classList.contains('grid-square')) {
-    e.target.classList.add('filled-square');
+    e.target.style.backgroundColor = `#${squareColor}`;
+    console.log(squareColor);
   }
 });
 
-const controls = document.getElementById('controls');
 controls.addEventListener('click', e => {
   if(e.target.id === 'resize') {
     squaresPerSide = prompt("How many squares per side? 2-64 recommended.");
   }
 
-  if(e.target.id == 'resetBtn') {}
+  if(e.target.id === 'reset') {
+    squareColor = '000';
+  } 
+
+  if(e.target.id === 'color') {
+    return squareColor = randomColor;
+  }
 
   resetGrid();
-  createGrid();  
+  createGrid(); 
+
+});
+
+gridContainer.addEventListener('mouseover', e => {
+  if (e.target.classList.contains('grid-square')) {
+    e.target.style.backgroundColor = `#${squareColor}`;
+    console.log(squareColor);
+  }
 });
 
 createGrid();
