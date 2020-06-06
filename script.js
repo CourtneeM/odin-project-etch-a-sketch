@@ -1,4 +1,5 @@
 const gridContainer = document.getElementById('grid-container');
+const btn = document.querySelector('button');
 
 
 
@@ -27,3 +28,18 @@ gridContainer.addEventListener('mouseover', e => {
     e.target.classList.add('filled-square');
   }
 });
+
+
+let newSize;
+btn.addEventListener('click', () => {
+  newSize = prompt("How many squares per side?");
+
+  while(gridContainer.childElementCount > 0) {
+    gridContainer.removeChild(gridContainer.firstChild);
+  }
+  console.log(gridContainer.childElementCount);
+  
+  console.log(newSize);
+  createGrid();
+});
+
