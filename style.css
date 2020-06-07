@@ -7,18 +7,36 @@ body {
   padding: 0;
 }
 
+main {
+	margin-top: 5px;
+	padding: 30px 90px 70px;
+	background-color: red;
+	border-radius: 50px;
+}
+
+#controls {
+	margin-bottom: 25px;
+	text-align: center;
+}
+
+#controls button {
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
 #grid-container {
   display: flex;
   flex-wrap: wrap;
   width: 780px;
-  margin-top: 70px;
-  border: 1px solid teal;
+	background-color: #fff;
+  border: 1px solid #000;
 }
 
 .grid-square {
-  border: 1px solid teal;
+  border: 1px solid #000;
 }
 
 .filled-square {
   background-color: #000;
 }
+

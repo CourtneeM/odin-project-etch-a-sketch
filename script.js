@@ -18,12 +18,18 @@ function createSquare() {
 }
 
 function resetGrid() {
-  while (gridContainer.childElementCount > 0) {
-    gridContainer.removeChild(gridContainer.firstChild);
-  }
+    for (let i = 0; i < gridContainer.childElementCount; i++) {
+      gridContainer.childNodes[i].style.backgroundColor = '#fff';
+    }
 }
 
 function createGrid() {
+
+  while (gridContainer.childElementCount > 0) {
+    gridContainer.removeChild(gridContainer.firstChild);
+  }
+  
+
   for (let i = 0; i < (squaresPerSide * squaresPerSide); i++) {
     createSquare();
   }
@@ -34,9 +40,10 @@ controls.addEventListener('click', e => {
     do {
       squaresPerSide = prompt("How many squares per side? 2-64 recommended. (Larger grids may take a moment to load)")
     } while (squaresPerSide < 1 || squaresPerSide == NaN);
+
     randomColor = false;
     grayscale = false;
-    resetGrid();
+
     createGrid(); 
   }
 
@@ -44,7 +51,6 @@ controls.addEventListener('click', e => {
     randomColor = false;
     grayscale = false;
     resetGrid();
-    createGrid(); 
   } 
 
   if (e.target.id === 'color') {
@@ -71,6 +77,7 @@ gridContainer.addEventListener('mouseover', e => {
       e.target.style.backgroundColor = `#000`;
     }
   }
+  console.log(e);
 });
 
 createGrid();
