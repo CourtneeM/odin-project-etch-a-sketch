@@ -30,19 +30,20 @@ function resetGrid() {
 controls.addEventListener('click', e => {
   if(e.target.id === 'resize') {
     squaresPerSide = prompt("How many squares per side? 2-64 recommended.");
+    resetGrid();
+    createGrid(); 
   }
 
   if(e.target.id === 'reset') {
     randomColor = false;
+    resetGrid();
+    createGrid(); 
   } 
 
   if(e.target.id === 'color') {
     randomColor = true;
     console.log(randomColor);
   }
-
-  resetGrid();
-  createGrid(); 
 
 });
 
